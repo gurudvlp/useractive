@@ -16,7 +16,7 @@ def send_packet(host, port):
 	
 currentPos = get_mousepos()
 lastActive = int(time.time())
-activeDelay = 3
+activeDelay = 300
 
 server_host = "10.4.20.139"
 server_port = 2509

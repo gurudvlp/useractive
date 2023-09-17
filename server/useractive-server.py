@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import socket
+import subprocess
 import time
 
 listen_port = 2509
@@ -17,6 +18,10 @@ while True:
 	# specific user?  Does the packet contain special data?  Things like that.
 	# For this little PoC, we just make the lights go brrrr
 	print(f"useractive received data: {listen_host}:{listen_port}::{client_address}: {data}")
+	
+	cmd = ["python", "useractive-blinklights.py"]
+	process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	stdout, stderr = process.communicate()
 	
 # Even though code can't reach this, we can close out the socket
 server_socket.close()
